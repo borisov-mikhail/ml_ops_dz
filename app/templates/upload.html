@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload SCV file</title>
+    <style>
+        body {
+            font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #ffffff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        form {
+            background: #e0e0e0; 
+            padding: 30px; 
+            padding-top: 5px; 
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+            width: 300px; 
+        }
+        label {
+            margin-bottom: 10px;
+            display: block;
+            font-size: 12px;
+        }
+        input[type="file"], input[type="checkbox"] {
+            margin-right: 2px;
+        }
+        button {
+            background-color: #111047; 
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px; 
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 50%; 
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #115293;
+        }
+    </style>
+</head>
+<body>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <h1 style="text-align: left;">Upload SCV file</h1>
+        <input type="file" id="file" name="file"><br /><br />
+        <label for="plot">
+            <input type="checkbox" id="plot" name="plot" checked>
+            Save density plot as PNG.
+        </label>
+        <label for="json">
+            <input type="checkbox" id="json" name="json" checked>
+            Save feature importance as JSON.
+        </label>
+        <button>Upload</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download Files</title>
+    <style>
+        body {
+            font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #ffffff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        div {
+            background: #e0e0e0; 
+            padding: 30px; /* внутренний отступ */
+            padding-top: 5px; /* уменьшенный верхний-внутренний отступ */
+            border-radius: 10px; /* скругление углов */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* мягкая тень */
+            width: 900px; /* ширина блока */
+            text-align: left;
+            align-items: top;
+        }
+        a {
+            color: #1976d2; /* синий цвет ссылок */
+            text-decoration: none; /* убрать подчёркивание */
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #115293; /* темно-синий при наведении */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Download Files</h1>
+        <table style="width: 900px;">
+            <tbody>
+            <tr>
+                <td>
+                    <h3>Data</h3>
+                </td>
+                <td>
+                    <h3>Plots</h3>
+                </td>
+                <td>
+                    <h3>JSON</h3>
+                </td>
+            </tr>
+            <tr>
+            <td style="width: 33%;">
+                {% for filename in files[0] | sort %}
+                {% if filename not in ('.DS_Store', '.gitkeep') %}
+                <a href="{{ url_for('download_file', filename=filename) }}">{{ filename }}</a>
+                {% endif %}
+                {% endfor %}
+            </td>
+            <td style="width: 33%;">
+                {% for filename in files[1] | sort %}
+                {% if filename not in ('.DS_Store', '.gitkeep') %}
+                <a href="{{ url_for('download_file', filename=filename) }}">{{ filename }}</a>
+                {% endif %}
+                {% endfor %}
+            </td>
+            <td style="width: 33%;">
+                {% for filename in files[2] | sort %}
+                {% if filename not in ('.DS_Store', '.gitkeep') %}
+                <a href="{{ url_for('download_file', filename=filename) }}">{{ filename }}</a>
+                {% endif %}
+                {% endfor %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
